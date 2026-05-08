@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>个人笔记本</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__title">个人笔记本</div>
+      <div class="topbar__actions">
+        <button id="newBtn" class="btn btn--primary" type="button">新建笔记</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <h2 class="panel__title">笔记编辑</h2>
+        <form id="noteForm" class="form" autocomplete="off">
+          <label class="field">
+            <span class="field__label">标题</span>
+            <input id="noteTitle" class="input" type="text" required maxlength="200" />
+          </label>
+
+          <label class="field">
+            <span class="field__label">内容</span>
+            <textarea
+              id="noteContent"
+              class="textarea"
+              required
+              rows="10"
+              maxlength="100000"
+            ></textarea>
+          </label>
+
+          <div class="form__actions">
+            <button id="saveBtn" class="btn btn--primary" type="submit">保存</button>
+            <button id="cancelBtn" class="btn" type="button">取消</button>
+          </div>
+        </form>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <div id="error" class="error" role="alert"></div>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel__title">笔记列表</h2>
+        <div id="notes" class="notes"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
