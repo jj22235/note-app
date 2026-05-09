@@ -1,14 +1,36 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
 
 
-# 创建笔记时，前端发送的数据格式
+class UserCreate(BaseModel):
+    username: str = Field(min_length=2, max_length=50)
+    password: str = Field(min_length=6, max_length=128)
+
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+
 class NoteCreate(BaseModel):
     title: str
     content: str
 
 
-# 返回给前端的数据格式（多了 id 和时间）
 class NoteResponse(BaseModel):
     id: int
     title: str
