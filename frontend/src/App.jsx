@@ -3,6 +3,8 @@ import { AuthProvider, useAuth } from './AuthContext'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NotesPage from './pages/NotesPage'
+import NoteEdit from './pages/NoteEdit'
+import NoteView from './pages/NoteView'
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth()
@@ -20,6 +22,22 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <NotesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/notes/:id"
+        element={
+          <ProtectedRoute>
+            <NoteView />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/notes/:id/edit"
+        element={
+          <ProtectedRoute>
+            <NoteEdit />
           </ProtectedRoute>
         }
       />
